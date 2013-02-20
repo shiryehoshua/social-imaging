@@ -1,0 +1,29 @@
+<h1>Listing image_blocks</h1>
+
+<table>
+  <tr>
+    <th>Left coord</th>
+    <th>Right coord</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @image_blocks.each do |image_block| %>
+  <tr>
+    <td><%= image_block.left_coord %></td>
+    <td><%= image_block.right_coord %></td>
+    <td><%= image_block.width %></td>
+    <td><%= image_block.height %></td>
+    <td><%= link_to 'Show', image_block %></td>
+    <td><%= link_to 'Edit', edit_image_block_path(image_block) %></td>
+    <td><%= link_to 'Destroy', image_block, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Image block', new_image_block_path %>
