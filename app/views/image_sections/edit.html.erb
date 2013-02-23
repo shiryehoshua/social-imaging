@@ -1,7 +1,7 @@
 <head>
 <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
 <script src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
-<script type="text/javascript" src="../javascripts/raphael.min.js"></script>
+<script type="text/javascript" src="../../javascripts/raphael.min.js"></script>
 <script type="text/javascript" src="../../javascripts/raphael.sketchpad.js"></script>
 </head>
 <style type="text/css">
@@ -15,19 +15,13 @@
         margin: 4em auto 0 auto;
    }
 </style>
-<h1>New Image!</h1>
-<div class="dialog">
-  <h1>Sketchpad!</h1>
-</div>
+
+<h1>Editing A Section of an Image!</h1>
 <div id="editor" class="editor"></div>
+<%= form_tag("/image_sections/" + @image_section.id.to_s(), :controller => "image_section", :action => "update", :method => "post") %> 
+<%= text_area_tag(:drawn_json, "", :size => "50x6") %>
 <br>
 <br>
-<%= form_tag("/save", :method => "post") do %>
-  <%= text_area_tag(:data, "", :size => "50x6") %>
-  <br>
-  <br>
-  <%= submit_tag("Save") %>
-<% end %>
 
 <script type="text/javascript">
 	var sketchpad = Raphael.sketchpad("editor", {
@@ -38,10 +32,10 @@
 
 	// When the sketchpad changes, update the input field.
 	sketchpad.change(function() {
-		$("#data").val(sketchpad.json());
+		$("#drawn_json").val(sketchpad.json());
 	});
 </script>
-
 <%= render 'form' %>
 
-<%= link_to 'Back', image_blocks_path %>
+<%= link_to 'Show', @image_section %> |
+<%= link_to 'Back', image_sections_path %>

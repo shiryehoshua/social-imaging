@@ -1,0 +1,2 @@
+module ImageSectionsHelper
+end

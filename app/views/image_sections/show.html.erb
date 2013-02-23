@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Left coord:</b>
+  <%= @image_section.left_coord %>
+</p>
+
+<p>
+  <b>Right coord:</b>
+  <%= @image_section.right_coord %>
+</p>
+
+<p>
+  <b>Width:</b>
+  <%= @image_section.width %>
+</p>
+
+<p>
+  <b>Height:</b>
+  <%= @image_section.height %>
+</p>
+
+<p>
+  <b>Sketchpad json:</b>
+  <%= @image_section.sketchpad_json %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_section_path(@image_section) %> |
+<%= link_to 'Back', image_sections_path %>

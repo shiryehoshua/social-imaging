@@ -1,0 +1,31 @@
+<h1>Listing image_sections</h1>
+
+<table>
+  <tr>
+    <th>Left coord</th>
+    <th>Right coord</th>
+    <th>Width</th>
+    <th>Height</th>
+    <th>Sketchpad json</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @image_sections.each do |image_section| %>
+  <tr>
+    <td><%= image_section.left_coord %></td>
+    <td><%= image_section.right_coord %></td>
+    <td><%= image_section.width %></td>
+    <td><%= image_section.height %></td>
+    <td><%= image_section.sketchpad_json %></td>
+    <td><%= link_to 'Show', image_section %></td>
+    <td><%= link_to 'Edit', edit_image_section_path(image_section) %></td>
+    <td><%= link_to 'Destroy', image_section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Image section', new_image_section_path %>

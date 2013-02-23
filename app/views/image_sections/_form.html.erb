@@ -1,0 +1,37 @@
+<%= form_for(@image_section) do |f| %>
+  <% if @image_section.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@image_section.errors.count, "error") %> prohibited this image_section from being saved:</h2>
+
+      <ul>
+      <% @image_section.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :left_coord %><br />
+    <%= f.number_field :left_coord %>
+  </div>
+  <div class="field">
+    <%= f.label :right_coord %><br />
+    <%= f.number_field :right_coord %>
+  </div>
+  <div class="field">
+    <%= f.label :width %><br />
+    <%= f.number_field :width %>
+  </div>
+  <div class="field">
+    <%= f.label :height %><br />
+    <%= f.number_field :height %>
+  </div>
+  <div class="field">
+    <%= f.label :sketchpad_json %><br />
+    <%= f.text_field :sketchpad_json %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
