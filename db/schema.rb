@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130222022713) do
+ActiveRecord::Schema.define(:version => 20130224173659) do
+
+  create_table "combined_images", :force => true do |t|
+    t.string   "filename"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "image_blocks", :force => true do |t|
     t.integer  "left_coord"
@@ -30,6 +36,12 @@ ActiveRecord::Schema.define(:version => 20130222022713) do
     t.string   "sketchpad_json"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "super_images", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

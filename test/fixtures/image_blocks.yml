@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: image_blocks
+#
+#  id          :integer          not null, primary key
+#  left_coord  :integer
+#  right_coord :integer
+#  width       :integer
+#  height      :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:

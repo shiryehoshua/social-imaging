@@ -56,7 +56,6 @@ class ImageSectionsController < ApplicationController
   # PUT /image_sections/1
   # PUT /image_sections/1.json
   def update
-    print "HELLOOOOOO"
     @image_section = ImageSection.find(params[:id])
 
     respond_to do |format|
@@ -68,8 +67,6 @@ class ImageSectionsController < ApplicationController
         format.json { render json: @image_section.errors, status: :unprocessable_entity }
       end
     end
-
-    print "HEREIAM"
   end
 
   # DELETE /image_sections/1

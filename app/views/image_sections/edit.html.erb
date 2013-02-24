@@ -5,19 +5,10 @@
 <script type="text/javascript" src="../../javascripts/raphael.sketchpad.js"></script>
 </head>
 <style type="text/css">
-    body {
-        text-align: center;
-    }
-    div.editor {
-        border: 10px solid #ccc;
-        width: 400px;
-        height: 400px;
-        margin: 4em auto 0 auto;
-   }
 </style>
 
 <h1>Editing A Section of an Image!</h1>
-<div id="editor" class="editor"></div>
+<div id="editor" class="sketchpad" style="width: <%= @image_section.width %>;height=<%= @image_section.height %>"></div>
 <%= form_tag("/image_sections/" + @image_section.id.to_s(), :controller => "image_section", :action => "update", :method => "post") %> 
 <%= text_area_tag(:drawn_json, "", :size => "50x6") %>
 <br>
@@ -25,8 +16,8 @@
 
 <script type="text/javascript">
 	var sketchpad = Raphael.sketchpad("editor", {
-		width: 400,
-		height: 400,
+		width: 30,
+		height: 30, 
 		editing: true
 	});
 

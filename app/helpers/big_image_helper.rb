@@ -1,0 +1,2 @@
+module BigImageHelper
+end
