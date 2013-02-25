@@ -19,7 +19,6 @@ class CombinedImage < ActiveRecord::Base
         new_image_section = ImageSection.create(:height => partHeight, :width => partWidth, :left_coord => x, :right_coord => y, :colors => get_list_colors(x, y, partWidth, partHeight))
         self.image_sections << new_image_section
         self.save
-        puts "x: " + x.to_s + " y: " + y.to_s
         x += partWidth
       end
       x = 0
