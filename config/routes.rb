@@ -7,7 +7,9 @@ SocialImaging::Application.routes.draw do
   get "static_pages/help"
 
   match "combined_images/:id/start" => 'combined_images#start'
+  match "combined_images/:id/boys" => 'combined_images#start'
   match "combined_images/:id/begin" => 'combined_images#begin'
+  match "combined_images/:id/girls" => 'combined_images#begin'
 
 
   # The priority is based upon order of creation:
