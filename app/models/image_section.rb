@@ -24,6 +24,14 @@ class ImageSection < ActiveRecord::Base
     return self.left_coord + (2 * self.left_coord / 30)
   end
 
+  def colors_without_opacity
+    cwo = []
+    self.get_color_list.each do |color|
+      cwo << color[0..5]
+    end
+    return cwo
+  end
+
   def get_color_list
     return colors.split(' ')
   end
