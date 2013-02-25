@@ -1,19 +1,10 @@
 SocialImaging::Application.routes.draw do
-  resources :colors
-
-
   resources :combined_images
-
-
   resources :image_sections
 
   get "static_pages/home"
 
   get "static_pages/help"
-
-  resources :image_blocks
-  resources :super_images
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
