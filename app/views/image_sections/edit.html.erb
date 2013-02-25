@@ -17,7 +17,12 @@
 <%= form_tag("/image_sections/" + @image_section.id.to_s(), :controller => "image_section", :action => "update", :method => "post") %> 
 <h1>Your color palette:</h1>
 <p>
-To use a color, simply click on a color. Note that some colors may appear to look the same but they aren't. Then, draw in the box above. When you're done hit the submit button below the color pallet! Repeat as many times as you'd like.</p> 
+To use a color, simply click on a color. Note that you may get very few, or a whole bunch of colors. Some colors may even look the same.<br> 
+<br>
+After you've clicked on the color of your choice, draw in the box above. 
+When you're done hit the submit button below the color pallet!<br>
+<br>
+Repeat as many times as you'd like (if you don't like your color palette, submit and see what you get next time!)</p> 
 <div class="color_pallete_container">
 <div class="color_pallete">
 <% @image_section.colors_without_opacity.each do |color| %>
