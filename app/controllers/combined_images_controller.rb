@@ -1,4 +1,9 @@
 class CombinedImagesController < ApplicationController
+
+  def start
+    @combined_image = CombinedImage.find(params[:id])
+  end
+
   # GET /combined_images
   # GET /combined_images.json
   def index
