@@ -7,15 +7,23 @@
 <style type="text/css">
 </style>
 
-<h1>Editing A Section of an Image!</h1>
-<div id="editor" class="sketchpad" style="width: <%= @image_section.width %>;height=<%= @image_section.height %>"></div>
+<h1>The rules:</h1>
+<h2>
+1. No white space in your sketch.<br><br> 
+2. Use every color in your pallet below.
+</h2>
+<div id="editor" class="sketchpad edit_mode" style="width: <%= @image_section.width %>;height=<%= @image_section.height %>"></div>
 <%= form_tag("/image_sections/" + @image_section.id.to_s(), :controller => "image_section", :action => "update", :method => "post") %> 
-<%= text_area_tag(:drawn_json, "", :size => "0") %>
+<h2>Your color pallete:</h2>
+<p>
+To use a color, simply click on a color. Note that some colors may appear to look the same but they aren't. Then, draw in the box above. When you're done hit submit!</p> 
+<div class="color_pallete_container">
 <div class="color_pallete">
 <% @image_section.colors_without_opacity.each do |color| %>
   <div id="editor_<%=color%>" class="color_button" style="background-color:#<%=color%>">
   </div>
 <% end %> 
+</div>
 </div>
 <br><br><br>
 
@@ -45,7 +53,5 @@
 
 </script>
 
+<%= text_area_tag(:drawn_json, "", :size => "0") %>
 <%= render 'form' %>
-
-<%= link_to 'Show', @image_section %> |
-<%= link_to 'Back', image_sections_path %>

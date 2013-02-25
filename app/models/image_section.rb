@@ -31,6 +31,10 @@ class ImageSection < ActiveRecord::Base
     end
     return cwo
   end
+ 
+  def submit_text
+    return "Submit"
+  end
 
   def get_color_list
     return colors.split(' ')

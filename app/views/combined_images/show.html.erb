@@ -3,12 +3,3 @@
 <% @combined_image.image_sections.each do |image_section| %>
   <%= render :partial => "image_sections/view_image", :locals => { :image_section => image_section } %>
 <% end %>
-  
-<p>
-  <b>Filename:</b>
-  <%= @combined_image.filename %>
-</p>
-
-
-<%= link_to 'Edit', edit_combined_image_path(@combined_image) %> |
-<%= link_to 'Back', combined_images_path %>
