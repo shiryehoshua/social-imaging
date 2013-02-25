@@ -57,10 +57,12 @@ class ImageSectionsController < ApplicationController
   # PUT /image_sections/1.json
   def update
     @image_section = ImageSection.find(params[:id])
+    ci = @image_section.combined_image
 
     respond_to do |format|
       if @image_section.update_attribute(:sketchpad_json, params[:drawn_json])
-        format.html { redirect_to @image_section, notice: 'Image section was successfully updated.' }
+        format.html { redirect_to edit_image_section_path(ci.image_sections.sample), 
+                      notice: 'Image section was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

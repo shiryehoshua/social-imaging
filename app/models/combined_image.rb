@@ -25,16 +25,14 @@ class CombinedImage < ActiveRecord::Base
       x = 0
       y += 30
     end
-    puts "AHHHHH\n\n\n\n\n" + self.image_sections.length.to_s + "\n\n\n\n\n"
   end
 
   def get_list_colors(x, y, width, height)
     colors = []
-    puts "at: x= " + x.to_s + ", y= " + y.to_s + ", w= " + width.to_s + ", h= " + height.to_s
     y.upto(y + width - 1) do |j|
       x.upto(x + width - 1) do |i|
         if !colors.include? @image[i,j].to_s(16)
-          colors << " " + @image[i,j].to_s(16)
+          colors << " " + @image[i,j].to_s(16)[0..5]
         end
       end
     end
