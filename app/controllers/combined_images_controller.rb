@@ -1,5 +1,9 @@
 class CombinedImagesController < ApplicationController
 
+  def begin
+    @combined_image = CombinedImage.find(params[:id])
+  end
+
   def start
     @combined_image = CombinedImage.find(params[:id])
   end
