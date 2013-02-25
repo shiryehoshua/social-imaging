@@ -15,4 +15,16 @@
 class ImageSection < ActiveRecord::Base
   attr_accessible :height, :left_coord, :right_coord, :sketchpad_json, :width, :colors
   belongs_to :combined_image
+
+  def get_left_pixel_pos
+    return self.right_coord + (2 * self.right_coord / 30)
+  end
+
+  def get_top_pixel_pos
+    return self.left_coord + (2 * self.left_coord / 30)
+  end
+
+  def get_color_list
+    return colors.split(' ')
+  end
 end

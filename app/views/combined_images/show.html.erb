@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% @combined_image.image_sections.each do |image_section| %>
+  <%= render :partial => "image_sections/view_image", :locals => { :image_section => image_section } %>
+<% end %>
+  
 <p>
   <b>Filename:</b>
   <%= @combined_image.filename %>

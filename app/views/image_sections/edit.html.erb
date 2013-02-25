@@ -10,11 +10,17 @@
 <h1>Editing A Section of an Image!</h1>
 <div id="editor" class="sketchpad" style="width: <%= @image_section.width %>;height=<%= @image_section.height %>"></div>
 <%= form_tag("/image_sections/" + @image_section.id.to_s(), :controller => "image_section", :action => "update", :method => "post") %> 
-<%= text_area_tag(:drawn_json, "", :size => "50x6") %>
-<br>
-<br>
+<%= text_area_tag(:drawn_json, "", :size => "0") %>
+<div class="color_pallete">
+<% @image_section.get_color_list.each do |color| %>
+  <div id="editor_<%=color%>" class="color_button" style="background-color:#<%=color%>">
+  </div>
+<% end %> 
+</div>
+<br><br><br>
 
 <script type="text/javascript">
+   $(document).ready(function() {
 	var sketchpad = Raphael.sketchpad("editor", {
 		width: 30,
 		height: 30, 
@@ -25,7 +31,20 @@
 	sketchpad.change(function() {
 		$("#drawn_json").val(sketchpad.json());
 	});
+
+        <% @image_section.get_color_list.each do |color| %>
+            $("#editor_" + <%=raw '"' + color + '"'%>).click(function() {
+                    sketchpad.pen().color("#" + <%=raw '"' + color + '"'%>);
+            });
+        <% end %>
+
+        $("#editor_black").click(function() {
+                sketchpad.pen().color("#000");
+        });
+    });
+
 </script>
+
 <%= render 'form' %>
 
 <%= link_to 'Show', @image_section %> |

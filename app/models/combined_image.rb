@@ -3,6 +3,10 @@ class CombinedImage < ActiveRecord::Base
   has_many :image_sections
   after_create :create_image_sections
 
+  def get_image_width
+    return @image.dimension.width
+  end
+
   def create_image_sections
     @image = ChunkyPNG::Image.from_file("app/assets/images/" + self.filename)
     num_image_sections = (@image.dimension.height / 30) * 
@@ -13,6 +17,7 @@ class CombinedImage < ActiveRecord::Base
     until y + partHeight > @image.dimension.height
       until x + partWidth > @image.dimension.width
         new_image_section = ImageSection.create(:height => partHeight, :width => partWidth, :left_coord => x, :right_coord => y, :colors => get_list_colors(x, y, partWidth, partHeight))
+        self.image_sections << new_image_section
         self.save
         puts "x: " + x.to_s + " y: " + y.to_s
         x += partWidth
@@ -20,6 +25,7 @@ class CombinedImage < ActiveRecord::Base
       x = 0
       y += 30
     end
+    puts "AHHHHH\n\n\n\n\n" + self.image_sections.length.to_s + "\n\n\n\n\n"
   end
 
   def get_list_colors(x, y, width, height)
@@ -32,6 +38,6 @@ class CombinedImage < ActiveRecord::Base
         end
       end
     end
-    return colors.join(' ')
+    return colors.uniq.join(' ')
   end
 end

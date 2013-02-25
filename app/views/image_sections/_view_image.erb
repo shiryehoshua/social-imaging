@@ -1,0 +1,24 @@
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="https://raw.github.com/ianli/raphael-sketchpad/master/javascripts/json2.js"></script>
+<script type="text/javascript" src="../../javascripts/raphael.min.js"></script>
+<script type="text/javascript" src="../../javascripts/raphael.sketchpad.js"></script>
+</head>
+
+<% url = image_section.nil? ? "#" : edit_image_section_path(image_section) %>
+<%= link_to url do %>
+  <div id="outer_viewer" style="position:absolute;top:<%=image_section.get_top_pixel_pos%>px;left:<%=image_section.get_left_pixel_pos%>px">
+    <div id="viewer_<%=image_section.id%>" class="sketchpad"></div> 
+  </div>
+<% end %>
+<script>
+$(document).ready(function() {
+    // Creates a viewer at the top left corner of the #viewer element
+    // initialized with the stroke data.
+    var viewer = Raphael.sketchpad("viewer_" + <%=image_section.id%>, {
+    	width: <%=raw image_section.nil? ? 0 : image_section.width %>,
+    	height: <%=raw image_section.nil? ? 0 : image_section.height %>,
+    	strokes: <%=raw (image_section.nil?) ? "[{}]" : image_section.sketchpad_json %>, 
+        editing: false 
+    });
+});
+</script>
