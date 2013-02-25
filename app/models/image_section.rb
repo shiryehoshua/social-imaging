@@ -19,11 +19,11 @@ class ImageSection < ActiveRecord::Base
   belongs_to :combined_image
 
   def get_left_pixel_pos
-    return self.right_coord + (2 * self.right_coord / 30)
+    return self.left_coord + (2 * self.left_coord / 30)
   end
 
   def get_top_pixel_pos
-    return self.left_coord + (2 * self.left_coord / 30)
+    return self.right_coord + (2 * self.right_coord / 30)
   end
 
   def colors_without_opacity
