@@ -1,4 +1,7 @@
 SocialImaging::Application.routes.draw do
+  resources :colors
+
+
   resources :combined_images
 
 
